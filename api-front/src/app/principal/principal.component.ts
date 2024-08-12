@@ -19,7 +19,7 @@ export class PrincipalComponent {
   clientes:Cliente[] = [];
 
   // Construtor para acesso ao cliente service para acesso as métodos
-  constructor(private servico:ClienteService){
+  constructor(public servico:ClienteService){
 
   }
 
@@ -27,5 +27,10 @@ export class PrincipalComponent {
   selecionar():void{
     this.servico.selecionar()
     .subscribe(retorno => this.clientes = retorno);
+  } 
+
+  // Método de inicialização
+  ngOnInit(){
+    this.selecionar();
   }
 }
