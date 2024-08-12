@@ -11,7 +11,7 @@
   <input type="button" value="Cancelar" *ngIf="!btnCadastro" class="btn btn-secondary">
 </form>
 
-<table class="table">
+<table class="table" *ngIf="tabela">
   <thead>
     <tr>
       <th>#</th>
@@ -27,7 +27,7 @@
       <td>{{cliente.nome}}</td>
       <td>{{cliente.idade}}</td>
       <td>{{cliente.cidade}}</td>
-      <td><button class="btn btn-success">Selecionar</button></td>
+      <td><button class="btn btn-success" (click)="selecionarCliente(i)">Selecionar</button></td>
     </tr>
   </tbody>
 </table>
