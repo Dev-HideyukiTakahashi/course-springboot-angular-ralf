@@ -89,6 +89,43 @@ export class PrincipalComponent {
     })
   }
 
+  // Método remover
+  remover():void{
+    this.servico.remover(this.cliente.codigo)
+    .subscribe(retorno => {
+      
+      // Obter posição do vetor onde está o cliente
+      let posicao = this.clientes.findIndex(obj => {
+        return obj.codigo == this.cliente.codigo;
+      });
+
+      // Remover cliente do vetor, necessário informar 1 linha no parametro ou vai excluir todos a partir daquela posição
+      this.clientes.splice(posicao, 1);
+
+      // Limpar formulário
+      this.cliente = new Cliente();
+
+      // Visibilidade dos botões
+      this.btnCadastro = true;
+      this.tabela = true;
+      
+      alert("Cliente deletado com sucesso!");
+    })
+  }
+
+  // Método para btn cancelar
+  cancelar():void{
+    
+      // Limpar formulário
+      this.cliente = new Cliente();
+
+      // Visibilidade dos botões
+      this.btnCadastro = true;
+      this.tabela = true;
+
+  }
+
+
   // Método de inicialização
   ngOnInit(){
     this.selecionar();
